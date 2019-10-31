@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { getStoryIds, getStory } from '../services/hnApi'
-
+import Story from '../components/Story'
 
 function Stories() {
   const [storyIds, setStoryIds] = useState([])
@@ -9,13 +9,12 @@ function Stories() {
   useEffect(() => {
     
     getStoryIds().then(data => setStoryIds(data))
-    getStory(21407015).then(data => console.log(data))
    
   }, [])
 
   return (
-    <div className="App">
-      <p>Stories</p>
+    <div>
+    {storyIds.map(storyId => <Story storyId={storyId} />)}
     </div>
   );
 }
