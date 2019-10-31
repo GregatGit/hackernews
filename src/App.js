@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import Stories from './containers/Stories'
+import StoriesContainer from './containers/Stories'
 function App() {
   
   return (
     <div className="App">
       <p>Hello</p>
-      <Stories />
+      <StoriesContainer />
     </div>
   );
 }
