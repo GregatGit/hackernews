@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { getStoryIds, getStory } from '../services/hnApi'
+import { getStoryIds } from '../services/hnApi'
 import { StoriesWrapper, GlobalStyle } from '../styles/StoriesStyles'
 import Story from '../components/Story'
 
