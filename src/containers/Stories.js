@@ -13,14 +13,13 @@ function Stories() {
 
   return (
     <div>
-      <GlobalStyle>
-        <StoriesWrapper data-testid="stories-container">
-          <h1>Hacker New Stories</h1>
-          {storyIds.map(storyId => (
-            <Story key={storyId} storyId={storyId} />
-          ))}
-        </StoriesWrapper>
-      </GlobalStyle>
+    <GlobalStyle />
+      <StoriesWrapper data-testid="stories-container">
+        <h1>Hacker New Stories</h1>
+        {storyIds.map(storyId => (
+          <Story key={storyId} storyId={storyId} />
+        ))}
+      </StoriesWrapper>
     </div>
   )
 }
