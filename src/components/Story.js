@@ -1,19 +1,37 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import { getStory } from '../services/hnApi'
+import {
+  StoryWrapper,
+  StoryTitle,
+  StoryMeta,
+  StoryMetaElement,
+} from '../styles/StoryStyles'
 
 const Story = ({ storyId }) => {
-  const [story, setStory] = useState()
+  const [story, setStory] = useState({})
 
   useEffect(() => {
-    getStory(storyId)
-      .then(data => data && data.url && setStory(data))
+    getStory(storyId).then(data => data && data.url && setStory(data))
   }, [])
 
   return story && story.url ? (
-    
-    <a href={story.url} target='_blank'><h2>{story.title}</h2></a>
-
-  ) : (null)
+    <StoryWrapper data-testid="story">
+      <StoryTitle>
+        <a href={story.url} target="_blank">
+          {story.title}
+        </a>
+      </StoryTitle>
+      <StoryMeta>
+        <span data-testid="story-by">
+          <StoryMetaElement color="#000">By:</StoryMetaElement> {story.by}
+        </span>
+        <span data-testid="story-time">
+          <StoryMetaElement color="#000">Posted:</StoryMetaElement>
+          {` ${story.time}`}
+        </span>
+      </StoryMeta>
+    </StoryWrapper>
+  ) : null
 }
 
 export default Story

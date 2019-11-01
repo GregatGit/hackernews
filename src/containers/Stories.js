@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react'
 
 import { getStoryIds, getStory } from '../services/hnApi'
+import { StoriesWrapper, GlobalStyle } from '../styles/StoriesStyles'
 import Story from '../components/Story'
 
 function Stories() {
   const [storyIds, setStoryIds] = useState([])
 
   useEffect(() => {
-    
     getStoryIds().then(data => setStoryIds(data))
-   
   }, [])
 
   return (
     <div>
-    {storyIds.map(storyId => <Story key={storyId} storyId={storyId} />)}
+      <GlobalStyle>
+        <StoriesWrapper data-testid="stories-container">
+          <h1>Hacker New Stories</h1>
+          {storyIds.map(storyId => (
+            <Story key={storyId} storyId={storyId} />
+          ))}
+        </StoriesWrapper>
+      </GlobalStyle>
     </div>
-  );
+  )
 }
 
 export default Stories
